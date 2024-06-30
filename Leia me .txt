@@ -1,0 +1,11 @@
+Leia me 
+Este documento explica a funcionalidade do código do jogo da cobra (Snake.js).
+
+Sobre o jogo
+O jogo da cobra é um clássico jogo arcade onde o jogador controla uma cobra que deve comer frutas para crescer. Ao comer uma fruta, a cauda da cobra fica um segmento mais comprida. O jogador deve evitar colidir com as paredes ou com o próprio corpo da cobra.
+
+(Read me
+This document explains the functionality of the snake game code (Snake.js).
+
+About the game
+The snake game is a classic arcade game where the player controls a snake that must eat fruit to grow. When eating a fruit, the snake's tail becomes one segment longer. The player must avoid colliding with the walls or the snake's own body.

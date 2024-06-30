@@ -1,0 +1,78 @@
+Documentação do código
+O código do jogo está organizado em um módulo JavaScript chamado Snake.  Veja abaixo a explicação de cada função e propriedade dentro do módulo.
+
+Inicialização (setup())
+	-Esta função é chamada quando a página carrega (window.onload).
+	-Define o canvas (canv) e o contexto de desenho 2D (ctx).
+	-Reseta o jogo (game.reset()) chamando a função reset.
+	-Adiciona um evento de resize de janela para redimensionar o canvas (resizeCanvas).
+
+Redimensionamento do canvas (resizeCanvas())
+	-Esta função é chamada quando a janela é redimensionada.
+	-Ajusta a largura e altura do canvas de acordo com o tamanho da janela.
+	-Calcula o tamanho de cada grid (quadrado) no tabuleiro do jogo.
+
+Atualização de informações (updateInfo())
+	-Esta função atualiza o placar na interface do jogo.
+	-Atualiza o texto dos elementos HTML com o id points e max-points.
+
+Objeto game
+	-Este objeto contém funções principais do jogo da cobra.
+
+	reset():
+
+		-Reseta o jogo para o estado inicial.
+		-Limpa o canvas e define as variáveis do jogo para seus valores iniciais.
+		-Atualiza o placar.
+	
+	action:
+
+		-Este objeto contém funções para definir a direção da cobra.
+			-up(): Define a direção da cobra para cima.
+			-down(): Define a direção da cobra para baixo.
+			-left(): Define a direção da cobra para esquerda.
+			-right(): Define a direção da cobra para direita.
+		-Evita que a cobra inverta a direção bruscamente (ex: não pode ir para cima logo após ir para baixo).
+
+	RandomFruit():
+
+		-Gera uma posição aleatória para a fruta no tabuleiro.
+		-Leva em consideração a existência de paredes (se ativadas).
+	
+	log():
+
+		-(Função para debug) Registra o estado do jogo no console do navegador.
+
+	loop():
+
+		-Loop principal do jogo que é executado periodicamente.
+		-Calcula a recompensa obtida no ciclo atual (-0.1 por tempo decorrido).
+		-Define funções para verificar colisões com paredes:
+			-DontHitWall(): Evita que a cobra passe por fora do tabuleiro (movimenta-se pela lateral oposta).
+			-HitWall(): Reseta o jogo e desenha paredes caso a cobra colida com elas ( paredes só existem se ativadas).
+		-Verifica se a cobra está parada (sem direção definida).
+		-Atualiza a posição da cobra com base na direção e velocidade.
+		-Atualiza a última ação realizada pelo jogador.
+		-Limpa o canvas.
+		-Verifica colisões:
+			-Colisão com paredes (se ativadas).
+			-Colisão com o próprio corpo da cobra.
+		-Atualiza a trilha da cobra (movimenta a cauda).
+		-Desenha as paredes (se ativadas).
+		-Desenha a cobra.
+		-Verifica se a cobra comeu a fruta.
+			-Aumenta a cauda (a menos que fixedTail esteja ativado).
+			-Aumenta a pontuação e atualiza o recorde.
+			-Gera uma nova fruta em posição válida.
+		-Desenha a fruta.
+		-Exibe ou oculta a mensagem inicial de início do jogo.
+		-Atualiza o placar na interface.
+		-Retorna a recompensa obtida no ciclo atual.
+
+Funções de controle (Snake)
+
+	-start(fps): Inicia o jogo da cobra com a taxa de quadros por segundo (fps) especificada.
+	-loop: Referência direta para a função loop do objeto game.
+	-reset: Referência direta para a função reset do objeto game.
+	-stop: Para o loop principal do jogo.
+	-setup: Objeto contendo funções de configuração
